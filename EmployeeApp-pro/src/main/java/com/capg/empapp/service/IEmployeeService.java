@@ -8,7 +8,7 @@ public interface IEmployeeService {
 	
 	public boolean addEmployee(Employee e)throws WrongSalaryException;
 	 
-	 public boolean editSalaryByEmployeeId(int id,int salary)throws InvalidEmployeeIdException;
+	 public boolean editSalaryByEmployeeId(int id,int salary,int experience)throws InvalidEmployeeIdException,WrongSalaryException;
 	 
 	 public boolean editExpByEmployeeId(int id,int exp)throws InvalidEmployeeIdException;
 	 

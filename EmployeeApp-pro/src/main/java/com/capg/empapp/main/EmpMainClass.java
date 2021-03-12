@@ -86,7 +86,7 @@ public class EmpMainClass {
 				else {
 					System.out.println("Cannot change experience");
 				}
-				if(app.empService.editSalaryByEmployeeId(empID,empsalary))
+				if(app.empService.editSalaryByEmployeeId(empID,empsalary,empEXp))
 					System.out.println("Salary change successfull");
 				else {
 					System.out.println("Cannot change salary");

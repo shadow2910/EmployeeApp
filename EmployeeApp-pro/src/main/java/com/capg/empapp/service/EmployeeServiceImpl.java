@@ -21,8 +21,10 @@ public class EmployeeServiceImpl implements IEmployeeService {
 		
 			if(e.getSalary()> 50000)
 			{
-				throw new WrongSalaryException();
+				throw new WrongSalaryException(e.getSalary());
 			}
+			else if(e.getSalary()>10000 && e.getExp()<3)
+				throw new WrongSalaryException(e.getSalary());
 			else return dao.addEmployee(e);		
 		
 	}
@@ -35,18 +37,25 @@ public class EmployeeServiceImpl implements IEmployeeService {
 	
 	// ================================================================================
 
-	public boolean editSalaryByEmployeeId(int id,int salary) throws InvalidEmployeeIdException {
-		if(dao.editSalaryByEmployeeId(id, salary))
-			return true;
-		else
-			return false;
+	public boolean editSalaryByEmployeeId(int id,int salary,int experience) throws InvalidEmployeeIdException,WrongSalaryException {
+		if(salary>50000)
+			throw new WrongSalaryException(salary);
+		else if(salary>10000 && experience<3)
+			throw new WrongSalaryException(salary);
+		else {
+			if(dao.editSalaryByEmployeeId(id, salary))
+				return true;
+			else
+				throw new InvalidEmployeeIdException(id);
+		}
+		
 	}
 
 	public boolean editExpByEmployeeId(int id,int exp) throws InvalidEmployeeIdException {
 		if(dao.editExpByEmployeeId(id, exp))
 			return true;
 		else
-		return false;
+			throw new InvalidEmployeeIdException(id);
 	}
 
 	public Employee[] getEmployeeBySalary(int salary) {

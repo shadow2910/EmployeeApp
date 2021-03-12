@@ -31,7 +31,6 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 				emp.setSalary(salary);
 				return true;
 			}
-			
 		}
 		return false;
 	}
